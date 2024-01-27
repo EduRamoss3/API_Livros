@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Context",
+    "\\Controllers",
+    "\\Interfaces",
+    "\\Migrations",
+    "\\Properties",
+    "\\Services"
+  ],
+  "SelectedNode": "\\Services\\LoginService.cs",
+  "PreviewInSolutionExplorer": false
+}
