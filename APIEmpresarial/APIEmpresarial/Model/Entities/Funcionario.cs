@@ -8,14 +8,14 @@ namespace APIEmpresarial.Model.Entities
         public int FuncionarioId { get; set; }
         [Required]
         [StringLength(300)]
-        public string? Nome { get; set; }
+        public string Nome { get; set; }
         [Required]
-        public double? Salario { get; set; }
+        public double Salario { get; set; }
         public override int GetHashCode()
         {
             return FuncionarioId.GetHashCode();
         }
-        public int CompareTo(object? obj)
+        public int CompareTo(object obj)
         {
            Funcionario other = obj as Funcionario;
            return FuncionarioId.CompareTo(other.FuncionarioId);

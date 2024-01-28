@@ -10,12 +10,31 @@ namespace APIEmpresarial.Model
     {
         [Key]
         public int EstoqueId { get; set; }
-        [JsonIgnore]
-        public Collection<Livro>? _Livros { get; set; }
+        public Livro Livro { get; set; }
+        [Required]
+        public string NomeLivro { get; set; }
         [Required]
         [MaxLength(300)]
-        public float? QuantidadeLivros { get; set; }
+        public int QuantidadeLivros { get; set; }
+        public Estoque(int estoqueId, Livro livro)
+        {
+            EstoqueId = estoqueId;
+            Livro = livro;
+            NomeLivro = livro.Nome;
+            QuantidadeLivros = livro.Quantidade;
+        }
+        public Estoque(Livro livro)
+        {
+            Livro = livro;
+            NomeLivro = livro.Nome;
+
+            QuantidadeLivros = livro.Quantidade;
+        }
+        public Estoque()
+        {
+
+        }
 
     }
-  
+
 }

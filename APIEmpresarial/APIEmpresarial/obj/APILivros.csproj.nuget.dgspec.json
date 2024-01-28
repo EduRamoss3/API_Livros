@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eduardo\\source\\repos\\API_Livros\\APIEmpresarial\\APIEmpresarial\\APILivros.csproj": {}
+    "C:\\Users\\Eduardo\\Source\\Repos\\API_Livros\\APIEmpresarial\\APIEmpresarial\\APILivros.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eduardo\\source\\repos\\API_Livros\\APIEmpresarial\\APIEmpresarial\\APILivros.csproj": {
+    "C:\\Users\\Eduardo\\Source\\Repos\\API_Livros\\APIEmpresarial\\APIEmpresarial\\APILivros.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eduardo\\source\\repos\\API_Livros\\APIEmpresarial\\APIEmpresarial\\APILivros.csproj",
+        "projectUniqueName": "C:\\Users\\Eduardo\\Source\\Repos\\API_Livros\\APIEmpresarial\\APIEmpresarial\\APILivros.csproj",
         "projectName": "APILivros",
-        "projectPath": "C:\\Users\\Eduardo\\source\\repos\\API_Livros\\APIEmpresarial\\APIEmpresarial\\APILivros.csproj",
+        "projectPath": "C:\\Users\\Eduardo\\Source\\Repos\\API_Livros\\APIEmpresarial\\APIEmpresarial\\APILivros.csproj",
         "packagesPath": "C:\\Users\\Eduardo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eduardo\\source\\repos\\API_Livros\\APIEmpresarial\\APIEmpresarial\\obj\\",
+        "outputPath": "C:\\Users\\Eduardo\\Source\\Repos\\API_Livros\\APIEmpresarial\\APIEmpresarial\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

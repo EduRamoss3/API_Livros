@@ -9,12 +9,12 @@ namespace APIEmpresarial.Model
         [Key]
         public int VendaId { get; set; }
         [JsonIgnore]
-        public Collection<Livro>? Livros { get; set; }
-        public DateTime? DataVenda { get; set; }
+        public Collection<Livro> Livros { get; set; }
+        public DateTime DataVenda { get; set; }
         public int LivroId { get; set; }    
-        public int? QuantidadeVenda { get; set; }
+        public int QuantidadeVenda { get; set; }
         [Required]
-        public double? ValorTotal { get; set; }
+        public double ValorTotal { get; set; }
 
     }
 }

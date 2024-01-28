@@ -10,11 +10,11 @@ namespace API.Context
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         { }
-        public DbSet<Categoria>? Categorias { get; set; }
-        public DbSet<Livro>? Livros { get; set; }
-        public DbSet<Funcionario>? Funcionarios { get; set; }
-        public DbSet<Vendas>? Vendas { get; set; }
-        public DbSet<Estoque>? Estoque { get; set; }
-        public DbSet<Gastos>? Gastos { get; set;}
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Livro> Livros { get; set; }
+        public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<Vendas> Vendas { get; set; }
+        public DbSet<Estoque> Estoque { get; set; }
+        public DbSet<Gastos> Gastos { get; set;}
     }
 }

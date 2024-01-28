@@ -7,9 +7,9 @@ namespace APIEmpresarial.Model
     {
         public int GastosId { get; set; }   
         [JsonIgnore]
-        public Collection<Vendas>? _Vendas { get; set; }
-        public DateTime? DataGasto { get; set; }
-        public double? TotalGasto { get; set; }
+        public Collection<Vendas> _Vendas { get; set; }
+        public DateTime  DataGasto { get; set; }
+        public double TotalGasto { get; set; }
         
         
     }

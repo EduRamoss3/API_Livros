@@ -3,6 +3,7 @@ using APIEmpresarial.Interfaces;
 using APIEmpresarial.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 
 namespace APIEmpresarial.Services
 {
@@ -51,14 +52,17 @@ namespace APIEmpresarial.Services
         public async Task<IActionResult> Delete(int id)
         {
             var categoria = _context.Categorias?.FirstOrDefault(p => p.CategoriaId == id);
-            if (categoria is null && categoria is not Categoria example)
+            if (categoria is null)
             {
-                return new BadRequestObjectResult("Erro ao deletar a categoria");
+                return new NotFoundObjectResult("Erro ao deletar a categoria");
+            }
+            if(categoria is not Categoria exampleCategoria)
+            {
+                return new BadRequestObjectResult("Verfique se os dados da categoria estão em formato correto!");
             }
             _context.Categorias?.Remove(categoria);
             await _context.SaveChangesAsync();
             return new OkObjectResult("Deletado com sucesso!");
-
         }
         public async Task<IActionResult> Update(int id)
         {

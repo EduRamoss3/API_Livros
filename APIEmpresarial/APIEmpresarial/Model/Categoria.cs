@@ -13,15 +13,21 @@ public class Categoria
     public int CategoriaId { get; set; }
     [Required]
     [MaxLength(80)]
-    public string? Nome { get; set; }
+    public string Nome { get; set; }
     [Required]
     [MaxLength(300)]
-    public string? ImagemUrl { get; set; }
+    public string ImagemUrl { get; set; }
     [JsonIgnore]
-    public Collection<Livro>? Livros { get; set;}  
-    public Categoria()
+    public Collection<Livro> Livros { get; set;}
+    public Categoria(string nome, string imagemUrl) 
     {
-        Livros = new Collection<Livro>();      
+        if(nome is not null)
+        {
+            this.Nome = nome;
+        }
+        if(imagemUrl is not null)
+        {
+            this.ImagemUrl = imagemUrl;
+        }
     }
- 
 }

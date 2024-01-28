@@ -51,8 +51,7 @@ namespace APIEmpresarial.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("varchar(300)");
 
-                    b.Property<double?>("Salario")
-                        .IsRequired()
+                    b.Property<double>("Salario")
                         .HasColumnType("double");
 
                     b.HasKey("FuncionarioId");
@@ -66,12 +65,20 @@ namespace APIEmpresarial.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<float?>("QuantidadeLivros")
+                    b.Property<int?>("LivroId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NomeLivro")
                         .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("QuantidadeLivros")
                         .HasMaxLength(300)
-                        .HasColumnType("float");
+                        .HasColumnType("int");
 
                     b.HasKey("EstoqueId");
+
+                    b.HasIndex("LivroId");
 
                     b.ToTable("Estoque");
                 });
@@ -82,10 +89,10 @@ namespace APIEmpresarial.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DataGasto")
+                    b.Property<DateTime>("DataGasto")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<double?>("TotalGasto")
+                    b.Property<double>("TotalGasto")
                         .HasColumnType("double");
 
                     b.HasKey("GastosId");
@@ -149,7 +156,7 @@ namespace APIEmpresarial.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DataVenda")
+                    b.Property<DateTime>("DataVenda")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int?>("GastosId")
@@ -158,11 +165,10 @@ namespace APIEmpresarial.Migrations
                     b.Property<int>("LivroId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("QuantidadeVenda")
+                    b.Property<int>("QuantidadeVenda")
                         .HasColumnType("int");
 
-                    b.Property<double?>("ValorTotal")
-                        .IsRequired()
+                    b.Property<double>("ValorTotal")
                         .HasColumnType("double");
 
                     b.HasKey("VendaId");
@@ -170,6 +176,15 @@ namespace APIEmpresarial.Migrations
                     b.HasIndex("GastosId");
 
                     b.ToTable("Vendas");
+                });
+
+            modelBuilder.Entity("APIEmpresarial.Model.Estoque", b =>
+                {
+                    b.HasOne("APIEmpresarial.Model.Livro", "Livro")
+                        .WithMany()
+                        .HasForeignKey("LivroId");
+
+                    b.Navigation("Livro");
                 });
 
             modelBuilder.Entity("APIEmpresarial.Model.Livro", b =>
@@ -181,7 +196,7 @@ namespace APIEmpresarial.Migrations
                         .IsRequired();
 
                     b.HasOne("APIEmpresarial.Model.Estoque", null)
-                        .WithMany("_Livros")
+                        .WithMany("Livros")
                         .HasForeignKey("EstoqueId");
 
                     b.HasOne("APIEmpresarial.Model.Vendas", null)
@@ -205,7 +220,7 @@ namespace APIEmpresarial.Migrations
 
             modelBuilder.Entity("APIEmpresarial.Model.Estoque", b =>
                 {
-                    b.Navigation("_Livros");
+                    b.Navigation("Livros");
                 });
 
             modelBuilder.Entity("APIEmpresarial.Model.Gastos", b =>

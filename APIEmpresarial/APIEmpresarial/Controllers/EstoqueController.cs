@@ -1,5 +1,6 @@
 ﻿using API.Context;
 using APIEmpresarial.Model;
+using APILivros.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
@@ -10,19 +11,15 @@ namespace APIEmpresarial.Controllers
     [Route("[controller]")]
     public class EstoqueController
     {
-        private readonly AppDbContext _context;
-        public EstoqueController(AppDbContext context)
+        private readonly IEstoqueService _estoqueService;
+        public EstoqueController(IEstoqueService service)
         {
-            _context = context;
+            _estoqueService = service;
         }
-        [HttpGet]
-        public ActionResult<IEnumerable<Estoque>> GetEstoque()
+        [HttpPost]
+        public async Task<IActionResult> AddEstoque(Livro livro)
         {
-          //  if(_context.Estoques is not null)
-            {
-              //return _context.Estoques.AsNoTracking().ToList();  // Falta implementar a interface..
-            }
-            return new NotFoundResult();
+            return await _estoqueService.AddEstoque(livro);
         }
     }
 }

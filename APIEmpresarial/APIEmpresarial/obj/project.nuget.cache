@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "goDhD/vqKs82Ayd+o4T89CENaLxjXY/iEHM/3dW4rUzcBjllr/YohqLM5gImnMYTmOzAIoNR52AuvyufQy8jzA==",
+  "dgSpecHash": "RyYtzN1lU5huXxNQa+F0fFUgQG1bWInXCIhh16MaK5aNGI/us/Cpbe6OCjTH9U3lXOoFKM3Y3FMTE/KNQuMcag==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Eduardo\\source\\repos\\API_Livros\\APIEmpresarial\\APIEmpresarial\\APILivros.csproj",
+  "projectFilePath": "C:\\Users\\Eduardo\\Source\\Repos\\API_Livros\\APIEmpresarial\\APIEmpresarial\\APILivros.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Eduardo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Eduardo\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.10\\microsoft.entityframeworkcore.7.0.10.nupkg.sha512",
