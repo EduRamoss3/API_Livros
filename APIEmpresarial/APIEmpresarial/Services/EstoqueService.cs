@@ -26,13 +26,10 @@ public class EstoqueService : IEstoqueService
             _context.Livros.Update(existLivro);
         }
         else
-        {
-           
+        {  
             Estoque estoque = new Estoque(livro);
             _context.Estoque.Add(estoque);
             _context.Livros.Add(livro);
-            
-
         }
         await _context.SaveChangesAsync();
         return new OkObjectResult("Adicionado ao estoque com sucesso!");

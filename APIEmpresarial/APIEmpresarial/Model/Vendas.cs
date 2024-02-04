@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace APIEmpresarial.Model
 {
-    public class Vendas
+    public sealed class Vendas
     {
         [Key]
         public int VendaId { get; set; }

@@ -2,7 +2,7 @@
 
 namespace APIEmpresarial.Model.Entities
 {
-    public class Funcionario : IComparable 
+    public sealed class Funcionario : IComparable 
     {
         [Key]
         public int FuncionarioId { get; set; }
@@ -11,6 +11,7 @@ namespace APIEmpresarial.Model.Entities
         public string Nome { get; set; }
         [Required]
         public double Salario { get; set; }
+        public Tipo Perfil { get; set; }
         public override int GetHashCode()
         {
             return FuncionarioId.GetHashCode();

@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 namespace APIEmpresarial.Model;
 
 [Table("Categoria")]
-public class Categoria
+public sealed class Categoria
 {
     [Key]
     [Required]
@@ -18,16 +18,14 @@ public class Categoria
     [MaxLength(300)]
     public string ImagemUrl { get; set; }
     [JsonIgnore]
-    public Collection<Livro> Livros { get; set;}
-    public Categoria(string nome, string imagemUrl) 
+    public Collection<Livro> Livros { get; set; } 
+    public Categoria(string nome, string imagemUrl)
     {
-        if(nome is not null)
-        {
-            this.Nome = nome;
-        }
-        if(imagemUrl is not null)
-        {
-            this.ImagemUrl = imagemUrl;
-        }
+        Nome = nome;
+        ImagemUrl = imagemUrl;
+    }
+    public Categoria()
+    {
+
     }
 }

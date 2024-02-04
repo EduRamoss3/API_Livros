@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 namespace APIEmpresarial.Model
 {
     [Table("Livros")]
-    public class Livro
+    public sealed class Livro
     {
         [Key]
         public int LivroId { get; set; }

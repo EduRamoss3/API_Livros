@@ -16,5 +16,6 @@ namespace API.Context
         public DbSet<Vendas> Vendas { get; set; }
         public DbSet<Estoque> Estoque { get; set; }
         public DbSet<Gastos> Gastos { get; set;}
+        
     }
 }

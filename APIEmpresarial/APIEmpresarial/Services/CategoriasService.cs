@@ -17,7 +17,7 @@ namespace APIEmpresarial.Services
         }
         public async Task<IActionResult> Create(Categoria categoria)
         {
-            if (categoria is not Categoria example)
+            if (categoria is not Categoria)
             {
                 return new BadRequestObjectResult("O formato da categoria está incorreto!");
             }
@@ -25,11 +25,11 @@ namespace APIEmpresarial.Services
             await _context.SaveChangesAsync();
             return new OkObjectResult(Task.CompletedTask);
         }
-        public ActionResult<IEnumerable<Categoria>> GetAll()
+        public async Task<ActionResult<IEnumerable<Categoria>>> GetAll()
         {
             if (_context.Categorias is not null)
             {
-                return _context.Categorias.AsNoTracking().Include(p => p.Livros).Where(c => c.CategoriaId <= 5).ToList();
+                return await _context.Categorias.AsNoTracking().Include(p => p.Livros).Where(c => c.CategoriaId > 0).ToListAsync();
             }
             else
             {
@@ -67,7 +67,7 @@ namespace APIEmpresarial.Services
         public async Task<IActionResult> Update(int id)
         {
             var categoria = _context.Categorias?.FirstOrDefault(p => p.CategoriaId == id);
-            if (categoria is null && categoria is not Categoria example)
+            if (categoria is null && categoria is not Categoria)
             {
                 return new BadRequestObjectResult("Erro ao atualizar a categoria");
             }

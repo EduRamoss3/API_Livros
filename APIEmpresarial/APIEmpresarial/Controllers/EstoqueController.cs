@@ -2,6 +2,7 @@
 using APIEmpresarial.Model;
 using APILivros.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 
@@ -9,7 +10,7 @@ namespace APIEmpresarial.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class EstoqueController
+    public class EstoqueController : ControllerBase
     {
         private readonly IEstoqueService _estoqueService;
         public EstoqueController(IEstoqueService service)

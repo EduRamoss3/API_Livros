@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace APIEmpresarial.Model
 {
-    public class Estoque
+    public sealed class Estoque
     {
         [Key]
         public int EstoqueId { get; set; }

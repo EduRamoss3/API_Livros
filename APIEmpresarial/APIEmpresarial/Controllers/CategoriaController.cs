@@ -13,19 +13,20 @@ namespace APIEmpresarial.Controllers
     public class CategoriaController : ControllerBase
     {
         private ICategoriaInterface _categoriainterface;
-        public CategoriaController(AppDbContext context, ICategoriaInterface categoriaInterface)
+        public CategoriaController(ICategoriaInterface categoriaInterface)
         {
             _categoriainterface = categoriaInterface;
         }
         [HttpGet]
-        public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos()
+        public async Task<ActionResult<IEnumerable<Categoria>>> GetCategoriasProdutos()
         {
-            return _categoriainterface.GetAll();
+            return await _categoriainterface.GetAll();
         }
         [HttpGet("ObterProdutos")]
-        public ActionResult<IEnumerable<Categoria>> Get()
+        public async Task<ActionResult<IEnumerable<Categoria>>> Get()
         {
-            return _categoriainterface.GetAll();
+            
+            return await _categoriainterface.GetAll();
         }
         [HttpGet("{id:int}", Name = "ObterCategoria")]
         public ActionResult<Categoria> Get(int id)
@@ -37,7 +38,11 @@ namespace APIEmpresarial.Controllers
         public async Task<IActionResult> Post(Categoria categoria)
         {
             await _categoriainterface.Create(categoria);
-            return new CreatedAtRouteResult("ObterCategoria", new { id = categoria.CategoriaId }, categoria);
+            if (ModelState.IsValid)
+            {
+                ModelState.AddModelError("ErroFormato", "Erro no formato de preenchimento!");
+            }
+            return new CreatedAtRouteResult("ObterCategoria", new { id = categoria.CategoriaId }, categoria) ;
         }
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Put(int id, Categoria categoria)

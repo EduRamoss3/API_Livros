@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace APIEmpresarial.Model
 {
-    public class Gastos
+    public sealed class Gastos
     {
         public int GastosId { get; set; }   
         [JsonIgnore]
