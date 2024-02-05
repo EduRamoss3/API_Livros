@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using APILivros.Model.Enum;
+using System.ComponentModel.DataAnnotations;
 
 namespace APIEmpresarial.Model.Entities
 {
-    public sealed class Funcionario : IComparable 
+    public sealed class Funcionario 
     {
         [Key]
         public int FuncionarioId { get; set; }
@@ -11,15 +12,10 @@ namespace APIEmpresarial.Model.Entities
         public string Nome { get; set; }
         [Required]
         public double Salario { get; set; }
+        [Required]
         public Tipo Perfil { get; set; }
-        public override int GetHashCode()
-        {
-            return FuncionarioId.GetHashCode();
-        }
-        public int CompareTo(object obj)
-        {
-           Funcionario other = obj as Funcionario;
-           return FuncionarioId.CompareTo(other.FuncionarioId);
-        }
+        [Required]
+        public string Password { get; set; }
+       
     }
 }

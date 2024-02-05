@@ -1,6 +1,8 @@
 ﻿namespace APILivros.Model.Enum
 {
-    public class Tipo
+    public enum Tipo
     {
+        Administrador = 1,
+        Usuario = 2
     }
 }

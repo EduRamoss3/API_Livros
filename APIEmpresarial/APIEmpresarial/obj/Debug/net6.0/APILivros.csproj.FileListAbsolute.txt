@@ -52,3 +52,11 @@ C:\Users\Eduardo\Source\Repos\API_Livros\APIEmpresarial\APIEmpresarial\obj\Debug
 C:\Users\Eduardo\Source\Repos\API_Livros\APIEmpresarial\APIEmpresarial\obj\Debug\net6.0\APILivros.pdb
 C:\Users\Eduardo\Source\Repos\API_Livros\APIEmpresarial\APIEmpresarial\obj\Debug\net6.0\APILivros.genruntimeconfig.cache
 C:\Users\Eduardo\Source\Repos\API_Livros\APIEmpresarial\APIEmpresarial\obj\Debug\net6.0\ref\APILivros.dll
+C:\Users\Eduardo\Source\Repos\API_Livros\APIEmpresarial\APIEmpresarial\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Eduardo\Source\Repos\API_Livros\APIEmpresarial\APIEmpresarial\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Eduardo\Source\Repos\API_Livros\APIEmpresarial\APIEmpresarial\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Eduardo\Source\Repos\API_Livros\APIEmpresarial\APIEmpresarial\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Eduardo\Source\Repos\API_Livros\APIEmpresarial\APIEmpresarial\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Eduardo\Source\Repos\API_Livros\APIEmpresarial\APIEmpresarial\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Eduardo\Source\Repos\API_Livros\APIEmpresarial\APIEmpresarial\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Eduardo\Source\Repos\API_Livros\APIEmpresarial\APIEmpresarial\bin\Debug\net6.0\BouncyCastle.Crypto.dll

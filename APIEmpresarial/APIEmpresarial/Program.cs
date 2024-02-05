@@ -22,6 +22,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ILivroInterface, LivroService>();
 builder.Services.AddScoped<ICategoriaInterface, CategoriasService>();
 builder.Services.AddScoped<IEstoqueService, EstoqueService>();
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
                     ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));

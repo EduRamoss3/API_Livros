@@ -5,10 +5,10 @@ using System.Collections.ObjectModel;
 namespace APILivros.Interfaces;
     public interface IEstoqueService
     {
-    Task<IActionResult> GetAllEstoque();
+    Task<ActionResult<IEnumerable<Estoque>>> GetAllEstoque();
     Task<IActionResult> AddEstoque(Livro livros);
-    ActionResult<Livro> GetLivroById(int id);
-    ActionResult<float> TotalInEstoque();
-    ActionResult<float> Quantity();
+    Task<ActionResult<Livro>> GetLivroById(int id);
+    Task<ActionResult<decimal>> TotalInEstoque();
+    Task<ActionResult<int>> Quantity();
 
     }

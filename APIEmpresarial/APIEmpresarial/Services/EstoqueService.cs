@@ -2,6 +2,7 @@
 using APIEmpresarial.Model;
 using APILivros.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 
 namespace APILivros.Services;
@@ -35,24 +36,31 @@ public class EstoqueService : IEstoqueService
         return new OkObjectResult("Adicionado ao estoque com sucesso!");
     }
 
-    public Task<IActionResult> GetAllEstoque()
+    public async Task<ActionResult<IEnumerable<Estoque>>> GetAllEstoque()
     {
-        throw new NotImplementedException();
+        return await _context.Estoque.ToListAsync();
     }
 
-    public ActionResult<Livro> GetLivroById(int id)
+    public async Task<ActionResult<Livro>> GetLivroById(int id)
     {
-        throw new NotImplementedException();
+        var findLivro = _context.Livros.FirstOrDefault(p => p.LivroId == id);
+        if(findLivro is null) { return new NotFoundObjectResult(findLivro); }
+        return await _context.Livros.FirstOrDefaultAsync(p => p.LivroId == id);
+        
     }
 
-    public ActionResult<float> Quantity()
+    public async Task<ActionResult<int>> Quantity()
     {
-        throw new NotImplementedException();
+        var totalQuantity = await _context.Estoque.SumAsync(e => e.QuantidadeLivros);
+        return totalQuantity;
+       
     }
 
-    public ActionResult<float> TotalInEstoque()
+    public async Task<ActionResult<decimal>> TotalInEstoque()
     {
-        throw new NotImplementedException();
+        decimal  totalQuantity = await _context.Estoque.SumAsync(e => e.QuantidadeLivros);
+        decimal  totalPrice = await _context.Estoque.SumAsync(e => e.Livro.Preco);
+        return totalQuantity * totalPrice;
     }
 }
 

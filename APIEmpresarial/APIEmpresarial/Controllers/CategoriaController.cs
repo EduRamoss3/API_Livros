@@ -1,6 +1,7 @@
 ﻿using API.Context;
 using APIEmpresarial.Interfaces;
 using APIEmpresarial.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
@@ -8,6 +9,7 @@ using System.Net;
 namespace APIEmpresarial.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
 
     public class CategoriaController : ControllerBase
