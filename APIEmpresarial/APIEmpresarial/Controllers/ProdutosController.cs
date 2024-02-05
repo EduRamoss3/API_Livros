@@ -19,73 +19,35 @@ namespace APIEmpresarial.Controllers
             _livrointerface = livroInterface;
         }
         [HttpGet]
-        public ActionResult<IEnumerable<Livro>> GetLivros()
+        public async Task<ActionResult<IEnumerable<Livro>>> GetLivros()
         {
-            return _livrointerface.GetAll();
+            return await _livrointerface.GetAll();
         }
         [HttpGet("{id:int}", Name = "ObterProduto")]
-        public ActionResult<Livro> GetLivro(int id)
+        public async Task<ActionResult<Livro>> GetLivro(int id)
         {
-            try
-            {
-                var livro = _livrointerface.GetLivro(id);
-                    return livro;
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
 
+            return await _livrointerface.GetLivro(id);
+            
         }
         [HttpPost("NovoProduto")]
-        public ActionResult Post(Livro livro)
+        public async Task<IActionResult> Post(Livro livro)
         {
-            try
-            {
-                _livrointerface.Create(livro);
-                return new CreatedAtRouteResult("ObterProduto",
-                new { id = livro.LivroId }, livro);
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
 
-
+            await _livrointerface.Create(livro);
+            return new CreatedAtRouteResult("ObterProduto",
+            new { id = livro.LivroId }, livro);
         }
         [HttpPut("{id:int}")]
-        public ActionResult Put(int id, Livro livro)
+        public async Task<IActionResult> Put(int id, Livro livro)
         {
-            try
-            {
-                if (livro is null) { return NotFound(livro); }
-                if (id != livro.LivroId) { return BadRequest(); }
-                _livrointerface.UpdateLivro(livro);
-                return Ok(livro);
-            }
-            catch (NullReferenceException)
-            {
-                return NotFound();
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
+            return await _livrointerface.UpdateLivro(livro, id);
         }
 
         [HttpDelete("{id:int}")]
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            try
-            {
-                _livrointerface.Delete(id);
-                return Ok();
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, "Ocorreu um erro ao deletar o item!");
-            }
-
+            return await _livrointerface.Delete(id);
         }
     }
 }

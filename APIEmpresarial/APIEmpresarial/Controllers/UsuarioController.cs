@@ -13,6 +13,7 @@ namespace APILivros.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class UsuarioController : ControllerBase
     {
 
@@ -23,18 +24,21 @@ namespace APILivros.Controllers
         }
         [HttpPost]
         [Route("[controller]/Create")]
+        [Authorize(Roles = "Administrador, Usuario")]
         public async Task<IActionResult> Create(Funcionario funcionario)
         {
             return await _usuarioService.Create(funcionario); 
         }
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult<IEnumerable<Funcionario>>> GetAllFuncionarios()
         {
             return await _usuarioService.GetAllFuncionario();
         }
 
         [HttpPost]
-        [Route("[controller]/Authenticate")]
+        [Route("/Authenticate")]
+        [AllowAnonymous]
         public async Task<ActionResult> Authenticate(AuthenticationDto model)
         {
             

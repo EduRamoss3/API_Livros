@@ -7,7 +7,6 @@ namespace APILivros.Interfaces;
     {
     Task<ActionResult<IEnumerable<Estoque>>> GetAllEstoque();
     Task<IActionResult> AddEstoque(Livro livros);
-    Task<ActionResult<Livro>> GetLivroById(int id);
     Task<ActionResult<decimal>> TotalInEstoque();
     Task<ActionResult<int>> Quantity();
 

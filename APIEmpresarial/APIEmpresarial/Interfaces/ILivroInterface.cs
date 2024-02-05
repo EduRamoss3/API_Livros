@@ -7,10 +7,10 @@ namespace APIEmpresarial.Interfaces
     public interface ILivroInterface
     {
         
-        void Create(Livro livro);
-        ActionResult<IEnumerable<Livro>> GetAll();
-        ActionResult<Livro> GetLivro(int id);
-        ActionResult UpdateLivro(Livro livro);
-        ActionResult Delete(int id);
+        Task<IActionResult>Create(Livro livro);
+        Task<ActionResult<IEnumerable<Livro>>> GetAll();
+        Task<ActionResult<Livro>> GetLivro(int id);
+        Task<IActionResult> UpdateLivro(Livro livro, int id);
+        Task<IActionResult> Delete(int id);
     }
 }

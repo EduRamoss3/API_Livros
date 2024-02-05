@@ -20,10 +20,34 @@ namespace APIEmpresarial.Controllers
             _estoqueService = service;
         }
         [HttpPost]
-        [Authorize(Roles ="Administrador")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> AddEstoque(Livro livro)
         {
             return await _estoqueService.AddEstoque(livro);
         }
+        [HttpGet]
+        [Authorize(Roles = "Administrador")]
+        [Route("[controller]/get_all_estoque")]
+        public async Task<ActionResult<IEnumerable<Estoque>>> GetAllEstoque()
+        {
+            return await _estoqueService.GetAllEstoque();
+        }
+        [HttpGet]
+        [Authorize(Roles = "Administrador")]
+        [Route("[controller]/quantidade_estoque")]
+        public async Task<ActionResult<int>> QuantidadeEstoque()
+        {
+            return await _estoqueService.Quantity();
+
+        }
+        [HttpGet]
+        [Authorize(Roles = "Administrador")]
+        [Route("[controller]/total_estoque")]
+        public async Task<ActionResult<decimal>> TotalEstoque()
+        {
+            return await _estoqueService.TotalInEstoque();
+
+        }
+
     }
 }

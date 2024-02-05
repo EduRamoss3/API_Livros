@@ -13,55 +13,47 @@ namespace APIEmpresarial.Services
         {
             _context = context;
         }
-        public void Create(Livro livro)
+
+        public async Task<IActionResult> Create(Livro livro)
         {
-            if (_context.Livros is not null)
-            {
-                _context.Livros.Add(livro);
-                _context.SaveChanges();
-            }
-        }
-        public ActionResult<IEnumerable<Livro>> GetAll()
-        {
-            if (_context.Livros is not null)
-            {
-                return _context.Livros.ToList();
-            }
-            else
+            var livroExist = await _context.Livros.FirstOrDefaultAsync(l => l.Nome == livro.Nome);
+            if(livroExist != null)
             {
                 return new BadRequestResult();
             }
+            await _context.Livros.AddAsync(livro);
+            await _context.SaveChangesAsync();
+            return new OkObjectResult(this);
         }
-        public ActionResult<Livro> GetLivro(int id)
+
+        public async Task<IActionResult> Delete(int id)
         {
-            if (_context.Livros is not null)
-            {
-                var livro = _context.Livros.FirstOrDefault(p => p.LivroId == id);
-                if (livro != null)
-                {
-                    return livro;
-                }
-            }
-            return new NotFoundResult();
+            var livroExist = await _context.Livros.FirstOrDefaultAsync(l => l.LivroId == id);
+            if(livroExist == null) { return new NotFoundObjectResult(this); }
+            _context.Livros.Remove(livroExist);
+            await _context.SaveChangesAsync();
+            return new OkObjectResult($"O livro {livroExist.Nome} foi removido com sucesso! (ID:{livroExist.LivroId}");
         }
-        public ActionResult UpdateLivro(Livro livro)
+
+        public async Task<ActionResult<IEnumerable<Livro>>> GetAll()
         {
-            _context.Entry(livro).State = EntityState.Modified;
-            _context.SaveChanges();
-            return new OkResult();
+            return await _context.Livros.ToListAsync();
         }
-        public ActionResult Delete(int id)
+
+        public async Task<ActionResult<Livro>> GetLivro(int id)
         {
-            if (_context.Livros is not null)
-            {
-                var livro = _context.Livros.FirstOrDefault(p => p.LivroId == id);
-                if (livro != null)
-                {
-                    _context.Livros.Remove(livro);
-                    _context.SaveChanges();
-                }
-            }
-            return new NotFoundResult();
+           var livro = await _context.Livros.FirstOrDefaultAsync(l => l.LivroId == id);
+           if(livro is null) { return new NotFoundObjectResult("O livro não existe"); }
+           return livro;
+        }
+
+        public async Task<IActionResult> UpdateLivro(Livro livro, int id)
+        {
+            var oldLivro = await _context.Livros.FirstOrDefaultAsync(l => l.LivroId == id);
+            if(oldLivro is null) { return new NotFoundObjectResult(this); }
+            oldLivro = livro;
+            await _context.SaveChangesAsync();
+            return new OkObjectResult("O livro foi atualizado com sucesso!");
         }
     }
 }

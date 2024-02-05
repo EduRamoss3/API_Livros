@@ -41,14 +41,6 @@ public class EstoqueService : IEstoqueService
         return await _context.Estoque.ToListAsync();
     }
 
-    public async Task<ActionResult<Livro>> GetLivroById(int id)
-    {
-        var findLivro = _context.Livros.FirstOrDefault(p => p.LivroId == id);
-        if(findLivro is null) { return new NotFoundObjectResult(findLivro); }
-        return await _context.Livros.FirstOrDefaultAsync(p => p.LivroId == id);
-        
-    }
-
     public async Task<ActionResult<int>> Quantity()
     {
         var totalQuantity = await _context.Estoque.SumAsync(e => e.QuantidadeLivros);
